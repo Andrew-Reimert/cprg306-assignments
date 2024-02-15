@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 export default function NewItem() {
-    const [name, setName] = useState(" ");
+    const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(1);
     const [category, setCategory] = useState("produce");
 
@@ -16,7 +16,7 @@ export default function NewItem() {
         console.log(item);
         alert("Item added!");
         setCategory("produce");
-        setName(" ");
+        setName("");
         setQuantity(1);
     };
 
@@ -26,16 +26,20 @@ export default function NewItem() {
                 <div className="flex justify-center"><label>
                     Name:{" "}
                     <input
+                        placeholder="Item Name"
                         type="text"
                         value={name}
                         onChange={(event) => setName(event.target.value)}
                         className="text-black border-2 border-gray-300 p-2 rounded-lg"
+                        required="True"
                     />
                 </label></div>
                 <label>
                     Quantity:{" "}
                     <input
                         type="number"
+                        min='1'
+                        max='99'
                         value={quantity}
                         onChange={(event) => setQuantity(event.target.value)}
                         className="text-black w-14 mt-2 border-2 border-gray-300 p-2 rounded-lg"
