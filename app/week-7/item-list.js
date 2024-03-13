@@ -22,7 +22,7 @@ export default function ItemList({ items }, onItemSelect) {
             </div>
             <ul>
                 {sortedItems.map((items) => (
-                    <Item key={items.id} name={items.name} quantity={items.quantity} category={items.category} onSelect={() => Item(onItemSelect)} />
+                    <Item key={items.id} name={items.name} quantity={items.quantity} category={items.category} onSelect={() => Item(onItemSelect)} /> // I'm pretty sure this is the root of the problem and I'm gonna try and fix it
                 ))}
             </ul>
         </div>
