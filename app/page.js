@@ -10,6 +10,7 @@ export default function MainPage() {
         <li> <Link href="week-4">week-4</Link> </li>
         <li> <Link href="week-5">week-5</Link> </li>
         <li> <Link href="week-6">week-6</Link> </li>
+        <li> <Link href="week-7">week-7</Link> </li>
       </ul>
     </main>
   );
