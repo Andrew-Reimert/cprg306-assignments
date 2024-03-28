@@ -5,6 +5,19 @@ import itemsData from './items.json';
 import MealIdeas from "./meal-ideas.js";
 import { useState } from "react";
 
+function clean(text){
+  // Remove emojis and other non-alphanumeric characters
+  text = removeEmojis(text);
+
+  // Remove other stuff
+  text = text.replace(/\d+(\s?L|dozen|kg)?/, '').trin();
+  text = text.split(',')[0].trim();
+  return text;
+}
+
+function removeEmojis(text){
+  return text.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
+}
 
 export default function Page() {
   const [items, setItems] = useState(itemsData);
@@ -15,10 +28,11 @@ export default function Page() {
   };
 
   const handleItemSelect = (item) => {
-    const sanitizedName = item.name.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
+    const sanitizedName = clean(item.name.trin());
     setSelectedItemName(sanitizedName);
     console.log(sanitizedName);
   };
+
 
     return (
       <main>
